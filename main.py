@@ -1,16 +1,59 @@
-# This is a sample Python script.
+class animal():
+    def __init__(self, name='', weight=0):
+        self.name = name
+        self.weight = weight
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def feed(self, f_count):
+        self.weight += f_count
+
+class wool():
+    pass
+
+class milk():
+    pass
+
+class eggs():
+    pass
+
+class goose(eggs, animal):
+    def __init__(self, *args):
+        animal.__init__(self, *args[:1])
+        self.type = 'Гусь'
+
+class cow(milk, animal):
+    def __init__(self, *args):
+        animal.__init__(self, *args)
+        self.type = 'Корова'
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class sheep(wool, animal):
+    def __init__(self, *args):
+        animal.__init__(self, *args)
+        self.type = 'Овца'
 
 
-# Press the green button in the gutter to run the script.
+class hen(eggs, animal):
+    def __init__(self, *args):
+        animal.__init__(self, *args)
+        self.type = 'Курица'
+
+
+class goat(milk, animal):
+    def __init__(self, *args):
+        animal.__init__(self, *args)
+        self.type = 'Коза'
+
+
+class duck(eggs, animal):
+    def __init__(self, *args):
+        animal.__init__(self, *args[:2])
+        self.type = 'Утка'
+
+def main():
+    duck1 = duck('Кряква', 3)
+    print(duck1.type, duck1.name, duck1.weight)
+    duck1.feed(0.5)
+    print(duck1.type, duck1.name, duck1.weight)
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
