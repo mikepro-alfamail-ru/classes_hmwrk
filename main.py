@@ -2,9 +2,20 @@ class animal():
     def __init__(self, name='', weight=0):
         self.name = name
         self.weight = weight
+        self.life = 100
 
     def feed(self, f_count):
         self.weight += f_count
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.life -= (100 - self.food) / 5
+        if self.life < 0:
+            self.life = 0
+        self.food = 0
+        return self
 
 class wool():
     pass
